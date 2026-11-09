@@ -85,7 +85,7 @@ const outcomes = [
 const faqs = [
   {
     question: "متى تبدأ الورشة؟",
-    answer: "تبدأ يوم الجمعة 6 نوفمبر 2026، وتُعقد اللقاءات أونلاين مباشر.",
+    answer: "تبدأ يوم الجمعة 20 نوفمبر 2026، وتُعقد اللقاءات أونلاين مباشر.",
   },
   {
     question: "كم عدد اللقاءات ومدة كل لقاء؟",
@@ -187,11 +187,11 @@ export default function Home() {
       <main>
         <section className="hero section-wrap" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <div className="eyebrow"><span className="eyebrow-dot" /> ورشة عملية <i /> أونلاين مباشر</div>
+            <div className="eyebrow"><span className="eyebrow-dot" /> ورشة الكتابة الهادفة بالذكاء الاصطناعي <i /> أونلاين مباشر</div>
             <h1 id="hero-title">اكتب محتوى <em>واضحًا وموثوقًا</em> بصوتك أنت.</h1>
-            <p className="hero-lede">بمساعدة الذكاء الاصطناعي، لا بدلًا منك. رحلة تطبيقية من تحديد الجمهور والهدف إلى محتوى محرر، متحقق من ادعاءاته، وقابل للنشر وإعادة الاستخدام.</p>
+            <p className="hero-lede">ورشة عملية لصنّاع المحتوى وأصحاب المشاريع والمسوقين. خلال 6 لقاءات مباشرة، تحوّل فكرة من مجالك إلى محتوى محرر وموثوق بصوتك.</p>
             <div className="hero-facts">
-              <div><CalendarDaysIcon /><span>الجمعة<br /><b>6 نوفمبر 2026</b></span></div>
+              <div><CalendarDaysIcon /><span>الجمعة<br /><b>20 نوفمبر 2026</b></span></div>
               <div><Clock3 size={19} /><span>البرنامج<br /><b>6 لقاءات × 90 دقيقة</b></span></div>
               <div><Video size={19} /><span>الحضور<br /><b>أونلاين مباشر</b></span></div>
             </div>
@@ -293,9 +293,9 @@ export default function Home() {
         </section>
 
         <section className="register-section section" id="register">
-          <div className="register-copy"><div className="section-kicker"><span>07 / التسجيل</span><i /></div><div className="register-overline"><span className="live-dot" /> الدفعة الأولى · الجمعة 6 نوفمبر 2026</div><h2>ابدأ من فكرة<br /><span className="gold-text">تستحق أن تُكتب.</span></h2><p>املأ البيانات التالية لفتح رسالة تسجيل جاهزة على واتساب. لن نخزن بياناتك هنا، ولن يُرسل الطلب إلا عندما تراجعه وتضغط إرسال داخل واتساب.</p><div className="register-assurance"><ShieldCheck size={20} /><span><b>بياناتك لا تُحفظ في هذه الصفحة.</b><small>تنتقل إلى واتساب فقط عند فتح الرسالة وإرسالها بنفسك.</small></span></div><div className="register-social-proof"><span className="social-orbit"><Compass size={24} /></span><span>AI NAVIGATORS<small>من الفكرة إلى محتوى موثوق</small></span></div></div>
+          <div className="register-copy"><div className="section-kicker"><span>07 / التسجيل</span><i /></div><div className="register-overline"><span className="live-dot" /> الدفعة الأولى · الجمعة 20 نوفمبر 2026</div><h2>ابدأ من فكرة<br /><span className="gold-text">تستحق أن تُكتب.</span></h2><p>املأ البيانات التالية لفتح رسالة تسجيل جاهزة على واتساب. لن نخزن بياناتك هنا، ولن يُرسل الطلب إلا عندما تراجعه وتضغط إرسال داخل واتساب.</p><div className="register-assurance"><ShieldCheck size={20} /><span><b>بياناتك لا تُحفظ في هذه الصفحة.</b><small>تنتقل إلى واتساب فقط عند فتح الرسالة وإرسالها بنفسك.</small></span></div><div className="register-social-proof"><span className="social-orbit"><Compass size={24} /></span><span>AI NAVIGATORS<small>من الفكرة إلى محتوى موثوق</small></span></div></div>
           <form className="register-form" onSubmit={handleSubmit}>
-            <div className="form-heading"><div><span>REGISTRATION / 01</span><h3>خطوتك الأولى تبدأ هنا.</h3></div><span className="form-index">06<br /><small>NOV</small></span></div>
+            <div className="form-heading"><div><span>REGISTRATION / 01</span><h3>خطوتك الأولى تبدأ هنا.</h3></div><span className="form-index">20<br /><small>NOV</small></span></div>
             <p className="form-description">املأ بياناتك لتجهيز رسالة التسجيل. الحقول ذات النجمة مطلوبة.</p>
             <label className="field-label" htmlFor="full-name">الاسم الكامل <i>*</i></label>
             <input className="form-control" id="full-name" name="name" type="text" placeholder="اكتب اسمك كما تريد أن نناديك" autoComplete="name" required />
@@ -326,5 +326,5 @@ export default function Home() {
 }
 
 function CalendarDaysIcon() {
-  return <span className="calendar-icon"><span>06</span><small>NOV</small></span>;
+  return <span className="calendar-icon"><span>20</span><small>NOV</small></span>;
 }
