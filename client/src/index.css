@@ -313,9 +313,10 @@ button:not(:disabled), a[href], select:not(:disabled), input[type="checkbox"]:no
 .contact-choice label { display: inline-flex; align-items: center; gap: 6px; color: #b9c6cd; font-size: 12px; }
 .contact-choice input { accent-color: var(--gold); }
 .contact-input-wrap .field-label { margin-top: 17px; }
-.consent-row { display: grid; grid-template-columns: 18px 18px 1fr; align-items: start; gap: 9px; margin-top: 20px; color: #adbdc6; font-size: 12px; line-height: 1.8; cursor: pointer; }
+.consent-row { display: grid; grid-template-columns: 18px minmax(0, 1fr); align-items: start; gap: 9px; margin-top: 20px; color: #adbdc6; font-size: 12px; line-height: 1.8; direction: rtl; text-align: start; cursor: pointer; }
 .consent-row > input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .consent-check { display: grid; width: 17px; height: 17px; margin-top: 2px; place-items: center; border: 1px solid #718696; border-radius: 3px; color: transparent; }
+.consent-row > span:last-child { min-width: 0; writing-mode: horizontal-tb; word-break: normal; overflow-wrap: normal; }
 .consent-row > input:checked + .consent-check { border-color: var(--gold); color: #101820; background: var(--gold-light); }
 .consent-row > input:focus-visible + .consent-check { outline: 2px solid var(--blue-bright); outline-offset: 2px; }
 .form-submit { width: 100%; margin-top: 19px; }
