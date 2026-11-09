@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import { Loader2, MessageCircle, RotateCcw, Send, Sparkles, X } from "lucide-react";
 import { trpc } from "@/lib/trpc";
+import { answerSiteQuestion } from "@/lib/siteFaq";
 import "./SiteAssistant.css";
 
 type ChatMessage = {
@@ -8,9 +9,13 @@ type ChatMessage = {
   content: string;
 };
 
+const isStaticFaq = import.meta.env.VITE_STATIC_ASSISTANT === "faq";
+
 const openingMessage: ChatMessage = {
   role: "assistant",
-  content: "أهلًا بك. اسألني عن الورشة أو محاورها أو طريقة التسجيل، وسأجيبك من معلومات الموقع.",
+  content: isStaticFaq
+    ? "أهلًا بك. أنا دليل الورشة، أجيب عن الأسئلة الشائعة المنشورة في الموقع."
+    : "أهلًا بك. اسألني عن الورشة أو محاورها أو طريقة التسجيل، وسأجيبك من معلومات الموقع.",
 };
 
 const suggestedQuestions = [
@@ -91,10 +96,12 @@ export default function SiteAssistant() {
     sendingRef.current = true;
 
     try {
-      const result = await answerMutation.mutateAsync({
-        message: content,
-        history,
-      });
+      const result = isStaticFaq
+        ? { answer: answerSiteQuestion(content) }
+        : await answerMutation.mutateAsync({
+            message: content,
+            history,
+          });
       setMessages((current) => [...current, { role: "assistant", content: result.answer }]);
     } catch {
       setFailedMessage(content);
@@ -142,8 +149,10 @@ export default function SiteAssistant() {
               <Sparkles size={19} />
             </span>
             <div className="site-assistant-heading">
-              <h2 id="site-assistant-title">مساعد AI Navigators</h2>
-              <p>اسأل عن الورشة والتسجيل</p>
+              <h2 id="site-assistant-title">
+                {isStaticFaq ? "دليل AI Navigators" : "مساعد AI Navigators"}
+              </h2>
+              <p>{isStaticFaq ? "إجابات ثابتة من معلومات الموقع" : "اسأل عن الورشة والتسجيل"}</p>
             </div>
             <div className="site-assistant-actions">
               <button
@@ -252,13 +261,23 @@ export default function SiteAssistant() {
         ref={launcherRef}
         type="button"
         onClick={() => setIsOpen((open) => !open)}
-        aria-label={isOpen ? "إغلاق مساعد AI Navigators" : "اسأل مساعد AI Navigators"}
+        aria-label={
+          isOpen
+            ? "إغلاق مساعد AI Navigators"
+            : isStaticFaq
+              ? "اسأل دليل AI Navigators"
+              : "اسأل مساعد AI Navigators"
+        }
         aria-expanded={isOpen}
         aria-haspopup="dialog"
         aria-controls="site-assistant-panel"
       >
         {isOpen ? <X size={23} /> : <MessageCircle size={24} />}
-        {!isOpen && <span className="site-assistant-launcher-label">اسأل المساعد</span>}
+        {!isOpen && (
+          <span className="site-assistant-launcher-label">
+            {isStaticFaq ? "اسأل دليل الورشة" : "اسأل المساعد"}
+          </span>
+        )}
       </button>
     </div>
   );

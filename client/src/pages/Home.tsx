@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { siteFaqs } from "@/lib/siteFaq";
 import {
   ArrowDownLeft,
   ArrowLeft,
@@ -80,37 +81,6 @@ const outcomes = [
   "نسخة محررة بصوتك وسجل للتحقق من الادعاءات والمصادر",
   "قالب إضافي لإعادة استخدام الفكرة ومشروع نهائي قابل للمراجعة",
   "خطة متابعة ونشر لأربعة أسابيع",
-];
-
-const faqs = [
-  {
-    question: "متى تبدأ الورشة؟",
-    answer: "تبدأ يوم الجمعة 20 نوفمبر 2026، وتُعقد اللقاءات أونلاين مباشر.",
-  },
-  {
-    question: "كم عدد اللقاءات ومدة كل لقاء؟",
-    answer: "البرنامج مكوّن من ستة لقاءات، مدة كل لقاء 90 دقيقة.",
-  },
-  {
-    question: "هل أحتاج إلى أداة ذكاء اصطناعي مدفوعة؟",
-    answer: "لا يشترط ذلك. الأداة وسيلة؛ ويركز المنهج على التفكير والكتابة والتحرير والتحقق، مع بدائل يدوية للأنشطة التي تعتمد على الأداة.",
-  },
-  {
-    question: "هل سأعمل على مثال عام؟",
-    answer: "ستعمل على فكرة أو محتوى حقيقي من مجالك، وتبني عليه مشروعًا تطبيقيًا متدرجًا تحفظ مخرجاته بعد كل لقاء.",
-  },
-  {
-    question: "هل تضمن الورشة انتشار المحتوى؟",
-    answer: "لا. تركز الورشة على محتوى أوضح وأكثر ملاءمة وموثوقية وقابلية للقياس، ولا تَعِد بانتشار مضمون.",
-  },
-  {
-    question: "كيف أتم التسجيل؟",
-    answer: "أكمل النموذج في هذه الصفحة. سيفتح واتساب برسالة جاهزة من بياناتك؛ لا يُرسل الطلب ولا يُعد التسجيل مكتملًا إلا بعد أن تضغط زر الإرسال داخل واتساب.",
-  },
-  {
-    question: "هل توجد شهادة؟",
-    answer: "تذكر المواد أن الشهادة تُصدر بعد استيفاء المشروع النهائي والاختبار وشروط التقييم المعتمدة.",
-  },
 ];
 
 function BrandMark() {
@@ -204,7 +174,7 @@ export default function Home() {
             <div className="hero-orbit orbit-one" />
             <div className="hero-orbit orbit-two" />
             <figure className="hero-art">
-              <img src="/manus-storage/TheArtofImpactfulWritingwithAI_3c076c81.png" alt="الصورة المرجعية لورشة الكتابة المؤثرة بالذكاء الاصطناعي مع المدرب وهو يكتب أمام حاسوبه" />
+              <img src={`${import.meta.env.BASE_URL}manus-storage/TheArtofImpactfulWritingwithAI_3c076c81.png`} alt="الصورة المرجعية لورشة الكتابة المؤثرة بالذكاء الاصطناعي مع المدرب وهو يكتب أمام حاسوبه" />
               <figcaption><span className="image-caption-mark">✦</span><span>THE ART OF<br /><b>IMPACTFUL WRITING</b></span><small>WITH AI</small></figcaption>
             </figure>
             <div className="floating-note"><span className="floating-icon"><PenLine size={17} /></span><span><b>صوتك أولًا</b><small>الأداة تقترح، وأنت تقرر</small></span></div>
@@ -288,7 +258,7 @@ export default function Home() {
         <section className="faq-section section" id="faq">
           <div className="section-kicker"><span>06 / أسئلة شائعة</span><i /></div>
           <div className="faq-layout"><div className="faq-intro"><h2>أسئلة قبل<br /><span className="blue-text">أن تبدأ.</span></h2><p>إذا بقي سؤال، أرسله لنا عبر واتساب وسنساعدك على معرفة ما إذا كانت الورشة تناسبك.</p><a className="text-link" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer">اسألنا عبر واتساب <ArrowLeft size={16} /></a></div>
-            <div className="faq-list">{faqs.map((faq, index) => <details className="faq-item" key={faq.question} open={index === 0}><summary><span className="faq-number">0{index + 1}</span><b>{faq.question}</b><ChevronDown size={18} /></summary><p>{faq.answer}</p></details>)}</div>
+            <div className="faq-list">{siteFaqs.map((faq, index) => <details className="faq-item" key={faq.question} open={index === 0}><summary><span className="faq-number">0{index + 1}</span><b>{faq.question}</b><ChevronDown size={18} /></summary><p>{faq.answer}</p></details>)}</div>
           </div>
         </section>
 
